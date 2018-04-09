@@ -74,14 +74,14 @@ class Camera(object):
 		self.current_pan = self.safe_plus(self.current_pan, -step)
 		self.pan_servo.write(self.current_pan)
 
-	def turn_up(self, step=TILT_STEP):
+	def turn_down(self, step=TILT_STEP):
 		''' Control the tilt servo to make the camera turning up '''
 		if self._DEBUG:
 			print self._DEBUG_INFO, 'Turn up at step:', step
 		self.current_tilt = self.safe_plus(self.current_tilt, step)
 		self.tilt_servo.write(self.current_tilt)
 
-	def turn_down(self, step=TILT_STEP):
+	def turn_up(self, step=TILT_STEP):
 		'''Control the tilt servo to make the camera turning down'''
 		if self._DEBUG:
 			print self._DEBUG_INFO, 'Turn down at step:', step
