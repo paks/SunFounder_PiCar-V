@@ -57,16 +57,21 @@ def run(request):
 
 		# ============== Front wheels =============
 		elif action == 'fwready':
-			fw.ready()
+			bw.ready()
 		elif action == 'fwleft':
-			fw.turn_left()
+			bw.turn_left()
 		elif action == 'fwright':
-			fw.turn_right()
+			bw.turn_right()
 		elif action == 'fwstraight':
-			fw.turn_straight()
+			if bw_status == 0:
+				bw.ready()
+			elif bw_status == 1:
+				bw.forward()
+			elif bw_status == -1:
+				bw.bacward()
 		elif 'fwturn' in action:
 			print "turn %s" % action
-			fw.turn(int(action.split(':')[1]))
+			#fw.turn(int(action.split(':')[1]))
 		
 		# ================ Camera =================
 		elif action == 'camready':
