@@ -79,7 +79,7 @@ def run(request):
 			elif bw_status == -1:
 				bw.backward()
 			else:
-                                bw.ready()
+                bw.ready()
 		elif 'fwturn' in action:
 			print "turn %s" % action
 			#fw.turn(int(action.split(':')[1]))
