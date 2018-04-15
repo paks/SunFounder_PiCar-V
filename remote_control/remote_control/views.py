@@ -37,6 +37,7 @@ def run(request):
 	global SPEED, bw_status
 	debug = ''
 	if 'action' in request.GET:
+        	print "bw_status %d" % bw_status
 		action = request.GET['action']
 		# ============== Back wheels =============
 		if action == 'bwready':
@@ -61,23 +62,24 @@ def run(request):
 			bw.ready()
 		elif action == 'fwleft':
 			bw.speed = SPEED
-			bw.turn_left()
-			if bw_status == 1:
+			if bw_status == -1:
+				bw.turn_left_backward()
+			else:
 				bw.turn_left()
-			elif bw_status == -1:
-				bw.turn_left_bacward()
 		elif action == 'fwright':
 			bw.speed = SPEED
-			if bw_status == 1:
+			if bw_status == -1:
+				bw.turn_right_backward()
+			else:
 				bw.turn_right()
-			elif bw_status == -1:
-				bw.turn_right_bacward()
 		elif action == 'fwstraight':
 			bw.speed = SPEED
 			if bw_status == 1:
 				bw.forward()
 			elif bw_status == -1:
-				bw.bacward()
+				bw.backward()
+			else:
+                                bw.ready()
 		elif 'fwturn' in action:
 			print "turn %s" % action
 			#fw.turn(int(action.split(':')[1]))
