@@ -57,15 +57,24 @@ def run(request):
 
 		# ============== Front wheels =============
 		elif action == 'fwready':
+			bw.speed = SPEED
 			bw.ready()
 		elif action == 'fwleft':
+			bw.speed = SPEED
 			bw.turn_left()
+			if bw_status == 1:
+				bw.turn_left()
+			elif bw_status == -1:
+				bw.turn_left_bacward()
 		elif action == 'fwright':
-			bw.turn_right()
+			bw.speed = SPEED
+			if bw_status == 1:
+				bw.turn_right()
+			elif bw_status == -1:
+				bw.turn_right_bacward()
 		elif action == 'fwstraight':
-			if bw_status == 0:
-				bw.ready()
-			elif bw_status == 1:
+			bw.speed = SPEED
+			if bw_status == 1:
 				bw.forward()
 			elif bw_status == -1:
 				bw.bacward()
