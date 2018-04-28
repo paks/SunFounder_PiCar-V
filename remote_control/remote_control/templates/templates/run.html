@@ -139,6 +139,9 @@
           case '(':
             run_action('camdown')
             break;
+          case 'R':
+            run_action('camrest')
+            break;
           case "'":
             run_action('camright')
             break;
@@ -241,6 +244,10 @@
         run_action('fwstraight')
       }
 
+      function cameraRestart(){
+        run_action('camrest')
+      }
+
       function toggle(targetid){
         if (document.getElementById){
           target=document.getElementById(targetid);
@@ -261,6 +268,7 @@
           <button class="mui-btn mui-btn--primary mui-btn--fab" onmousedown="set_speed('70')" id="button_opacity">3</button>
           <button class="mui-btn mui-btn--primary mui-btn--fab" onmousedown="set_speed('85')" id="button_opacity">4</button>
           <button class="mui-btn mui-btn--primary mui-btn--fab" onmousedown="set_speed('100')" id="button_opacity">5</button>
+          <button class="mui-btn mui-btn--primary mui-btn--fab" onmousedown="run_action('camrest')" id="button_opacity">R</button>
           <button class="mui-btn mui-btn--primary" onmousedown="toggle('div_appbar')" id="button_opacity">Fullscreen</button>
         </div>
         <!-- Control Panel-->
